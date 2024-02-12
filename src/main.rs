@@ -9,7 +9,9 @@ async fn main() {
 
         println!("Connection from {addr:?}");
 
-        process(socket).await;
+        tokio::spawn(async move {
+            process(socket).await;
+        });
     }
 }
 
